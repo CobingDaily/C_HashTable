@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "logger.h"
 
 #define TABLE_SIZE 10
 
-void error(const char* message) {
-    printf("[ERROR]  %s\n", message);
-    exit(1);
-}
 
 typedef struct {
     int key;
@@ -91,7 +88,7 @@ int main(void) {
     put(&table, "test7");
     put(&table, "test8");
     put(&table, "test9");
-    put(&table, "test10");
+    // put(&table, "test10");
 
     print_table(&table, false);
 
