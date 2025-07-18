@@ -9,9 +9,8 @@ void warn(const char* message) {
     printf("[WARNING]  %s\n", message);
 }
 
-void error(const char* message) {
+void err(const char* message) {
     printf("[ERROR]  %s\n", message);
-    exit(1);
 }
 
 
