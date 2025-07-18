@@ -10,7 +10,7 @@ OBJDIR = obj
 BINDIR = bin
 
 # Target executable
-TARGET = $(BINDIR)/hashtable
+TARGET = $(BINDIR)/main
 
 # Source files
 SOURCES = $(wildcard $(SRCDIR)/*.c)
