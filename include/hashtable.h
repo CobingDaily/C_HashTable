@@ -19,6 +19,8 @@ typedef struct {
 
 unsigned int hash(const char*);
 
-void put(hash_table*, person*);
+void hash_table_put(hash_table*, person*);
 
-person get(hash_table*, const char* name);
+person hash_table_get(hash_table*, const char* name);
+
+person hash_table_delete(hash_table*, const char* name);
