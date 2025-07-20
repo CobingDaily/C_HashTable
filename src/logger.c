@@ -12,5 +12,3 @@ void warn(const char* message) {
 void err(const char* message) {
     printf("[ERROR]  %s\n", message);
 }
-
-

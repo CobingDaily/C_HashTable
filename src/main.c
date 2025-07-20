@@ -4,10 +4,34 @@
 
 int main(void)
 {    
-    const char* string = "Hello!";
+    const char* string = "d001";
     unsigned int index = hash(string);
 
     printf("Hash: %d\n", index);
+    
+    hash_table ht = {0};
+
+    entry bob1 = {
+        .name = "Bob",
+        .age = 18,
+    };
+
+
+    entry bob2 = {
+        .name = "Bob",
+        .age = 21,
+    };
+
+    entry alex = {
+        .name = "Alex",
+        .age = 25,
+    };
+
+    hash_table_put(&ht, &bob1);
+    hash_table_put(&ht, &bob2);
+    hash_table_put(&ht, &alex);
+
+    print_ht(&ht);
 
     return 0;
 }
