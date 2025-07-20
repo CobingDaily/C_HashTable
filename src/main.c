@@ -34,8 +34,10 @@ int main(void)
 
     info("=============");
 
-    entry lookup = hash_table_get(&ht, "Bob");
+    entry lookup = hash_table_delete(&ht, "Bob");
+
     print_entry(&lookup);
-    
+    print_ht(&ht);
+
     return 0;
 }

@@ -31,6 +31,7 @@ void hash_table_put(hash_table *ht, entry *e)
 
     ht->entries[index].age = e->age;
     ht->entries[index].name = e->name;
+    ht->count++;
 }
 
 entry hash_table_get(hash_table *ht, const char *name)
@@ -46,6 +47,25 @@ entry hash_table_get(hash_table *ht, const char *name)
     }
 
     return *current;
+}
+
+entry hash_table_delete(hash_table *ht, const char *name)
+{
+    unsigned int index = hash(name);
+
+    entry *current = &ht->entries[index];
+
+    while (current->name && strcmp(current->name, name))
+    {
+        index = (index + 1) % TABLE_SIZE;
+        current = &ht->entries[index];
+    }
+    entry ret = *current;
+    current->age = NULL;
+    current->name = NULL;
+
+    ht->count--;
+    return ret;
 }
 
 // Utilities
