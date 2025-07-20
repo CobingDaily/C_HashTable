@@ -17,7 +17,7 @@ unsigned int hash(const char *string)
     return sum % TABLE_SIZE;
 }
 
-void hash_table_put(hash_table* ht, entry* e)
+void hash_table_put(hash_table *ht, entry *e)
 {
     unsigned int index = hash(e->name);
 
@@ -25,10 +25,8 @@ void hash_table_put(hash_table* ht, entry* e)
 
     while (current->name && strcmp(current->name, e->name))
     {
-        info("Strings don't match");
         index = (index + 1) % TABLE_SIZE;
         current = &ht->entries[index];
-
     }
 
     ht->entries[index].age = e->age;
@@ -37,13 +35,14 @@ void hash_table_put(hash_table* ht, entry* e)
 
 // Utilities
 
-void print_entry(entry* e) {
+void print_entry(entry *e)
+{
     printf("{Name: %s, Age: %d}\n", e->name, e->age);
 }
 
-void print_ht(hash_table* ht)
+void print_ht(hash_table *ht)
 {
-    entry* entries = ht->entries;
+    entry *entries = ht->entries;
 
     for (int i = 0; i < TABLE_SIZE; i++)
     {
