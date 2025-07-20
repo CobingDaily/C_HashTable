@@ -33,6 +33,21 @@ void hash_table_put(hash_table *ht, entry *e)
     ht->entries[index].name = e->name;
 }
 
+entry hash_table_get(hash_table *ht, const char *name)
+{
+    unsigned int index = hash(name);
+
+    entry *current = &ht->entries[index];
+
+    while (current->name && strcmp(current->name, name))
+    {
+        index = (index + 1) % TABLE_SIZE;
+        current = &ht->entries[index];
+    }
+
+    return *current;
+}
+
 // Utilities
 
 void print_entry(entry *e)

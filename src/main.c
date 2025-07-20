@@ -32,5 +32,10 @@ int main(void)
 
     print_ht(&ht);
 
+    info("=============");
+
+    entry lookup = hash_table_get(&ht, "Bob");
+    print_entry(&lookup);
+    
     return 0;
 }
