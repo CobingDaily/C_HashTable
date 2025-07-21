@@ -4,8 +4,8 @@
 
 typedef struct
 {
-    const char *name;
-    unsigned int age;
+    const char *key;
+    unsigned int value;
 } element;
 
 typedef struct
@@ -18,9 +18,9 @@ unsigned int hash(const char *);
 
 void hash_table_put(hash_table *, element *);
 
-element hash_table_get(hash_table *, const char *name);
+element hash_table_get(hash_table *, const char *key);
 
-element hash_table_delete(hash_table *, const char *name);
+element hash_table_delete(hash_table *, const char *key);
 
 // Utilities
 void print_entry(element *);

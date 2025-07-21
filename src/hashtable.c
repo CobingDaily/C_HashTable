@@ -19,18 +19,18 @@ unsigned int hash(const char *string)
 
 void hash_table_put(hash_table *ht, element *e)
 {
-    unsigned int index = hash(e->name);
+    unsigned int index = hash(e->key);
 
     element *current = &ht->entries[index];
 
-    while (current->name && strcmp(current->name, e->name))
+    while (current->key && strcmp(current->key, e->key))
     {
         index = (index + 1) % TABLE_SIZE;
         current = &ht->entries[index];
     }
 
-    ht->entries[index].age = e->age;
-    ht->entries[index].name = e->name;
+    ht->entries[index].key = e->key;
+    ht->entries[index].value = e->value;
     ht->count++;
 }
 
@@ -40,7 +40,7 @@ element hash_table_get(hash_table *ht, const char *name)
 
     element *current = &ht->entries[index];
 
-    while (current->name && strcmp(current->name, name))
+    while (current->key && strcmp(current->key, name))
     {
         index = (index + 1) % TABLE_SIZE;
         current = &ht->entries[index];
@@ -55,14 +55,14 @@ element hash_table_delete(hash_table *ht, const char *name)
 
     element *current = &ht->entries[index];
 
-    while (current->name && strcmp(current->name, name))
+    while (current->key && strcmp(current->key, name))
     {
         index = (index + 1) % TABLE_SIZE;
         current = &ht->entries[index];
     }
     element ret = *current;
-    current->age = NULL;
-    current->name = NULL;
+    current->key = NULL;
+    current->value = NULL;
 
     ht->count--;
     return ret;
@@ -72,7 +72,7 @@ element hash_table_delete(hash_table *ht, const char *name)
 
 void print_entry(element *e)
 {
-    printf("{Name: %s, Age: %d}\n", e->name, e->age);
+    printf("{Name: %s, Age: %d}\n", e->key, e->value);
 }
 
 void print_ht(hash_table *ht)

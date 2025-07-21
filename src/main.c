@@ -12,18 +12,18 @@ int main(void)
     hash_table ht = {0};
 
     element bob1 = {
-        .name = "Bob",
-        .age = 18,
+        .key = "Bob",
+        .value = 18,
     };
 
     element bob2 = {
-        .name = "Bob",
-        .age = 21,
+        .key = "Bob",
+        .value = 21,
     };
 
     element alex = {
-        .name = "Alex",
-        .age = 25,
+        .key = "Alex",
+        .value = 25,
     };
 
     hash_table_put(&ht, &bob1);
