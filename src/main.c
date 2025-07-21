@@ -11,17 +11,17 @@ int main(void)
 
     hash_table ht = {0};
 
-    entry bob1 = {
+    element bob1 = {
         .name = "Bob",
         .age = 18,
     };
 
-    entry bob2 = {
+    element bob2 = {
         .name = "Bob",
         .age = 21,
     };
 
-    entry alex = {
+    element alex = {
         .name = "Alex",
         .age = 25,
     };
@@ -34,7 +34,7 @@ int main(void)
 
     info("=============");
 
-    entry lookup = hash_table_delete(&ht, "Bob");
+    element lookup = hash_table_delete(&ht, "Bob");
 
     print_entry(&lookup);
     print_ht(&ht);

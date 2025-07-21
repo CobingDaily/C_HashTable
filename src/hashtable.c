@@ -17,11 +17,11 @@ unsigned int hash(const char *string)
     return sum % TABLE_SIZE;
 }
 
-void hash_table_put(hash_table *ht, entry *e)
+void hash_table_put(hash_table *ht, element *e)
 {
     unsigned int index = hash(e->name);
 
-    entry *current = &ht->entries[index];
+    element *current = &ht->entries[index];
 
     while (current->name && strcmp(current->name, e->name))
     {
@@ -34,11 +34,11 @@ void hash_table_put(hash_table *ht, entry *e)
     ht->count++;
 }
 
-entry hash_table_get(hash_table *ht, const char *name)
+element hash_table_get(hash_table *ht, const char *name)
 {
     unsigned int index = hash(name);
 
-    entry *current = &ht->entries[index];
+    element *current = &ht->entries[index];
 
     while (current->name && strcmp(current->name, name))
     {
@@ -49,18 +49,18 @@ entry hash_table_get(hash_table *ht, const char *name)
     return *current;
 }
 
-entry hash_table_delete(hash_table *ht, const char *name)
+element hash_table_delete(hash_table *ht, const char *name)
 {
     unsigned int index = hash(name);
 
-    entry *current = &ht->entries[index];
+    element *current = &ht->entries[index];
 
     while (current->name && strcmp(current->name, name))
     {
         index = (index + 1) % TABLE_SIZE;
         current = &ht->entries[index];
     }
-    entry ret = *current;
+    element ret = *current;
     current->age = NULL;
     current->name = NULL;
 
@@ -70,14 +70,14 @@ entry hash_table_delete(hash_table *ht, const char *name)
 
 // Utilities
 
-void print_entry(entry *e)
+void print_entry(element *e)
 {
     printf("{Name: %s, Age: %d}\n", e->name, e->age);
 }
 
 void print_ht(hash_table *ht)
 {
-    entry *entries = ht->entries;
+    element *entries = ht->entries;
 
     for (int i = 0; i < TABLE_SIZE; i++)
     {
