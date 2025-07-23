@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdlib.h>
 
 stack_t* stack_new(size_t capacity)
 {
@@ -23,4 +24,26 @@ stack_t* stack_new(size_t capacity)
     stack_ptr->data = data;
     
     return stack_ptr;
+}
+
+
+void stack_push(stack_t* stack, void* object)
+{
+    // Resize if capacity is exceeded
+    if (stack->count == stack->capacity)
+    {
+        void** reallocated = realloc(stack->data, 2 * stack->capacity * sizeof(void*));
+        if (!reallocated)
+        {
+            return;
+        }
+
+        stack->capacity *= 2;
+        stack->data = reallocated;
+    }
+
+    // Add new object
+    stack->data[stack->count] = object;
+    stack->count++;
+    return;
 }
