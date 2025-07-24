@@ -1,6 +1,7 @@
 #include "stack.h"
 #include <stdlib.h>
 
+
 stack_t* stack_new(size_t capacity)
 {
     // Create address for the stack metadata on the heap
@@ -58,4 +59,20 @@ void* stack_pop(stack_t* stack)
 
     stack->count--;
     return stack->data[stack->count];
+}
+
+
+void stack_free(stack_t* stack)
+{
+    if (stack == NULL)
+    {
+        return;
+    }
+
+    if (stack->data != NULL)
+    {
+        free(stack->data);
+    }
+    
+    free(stack);
 }
