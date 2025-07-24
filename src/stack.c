@@ -47,3 +47,15 @@ void stack_push(stack_t* stack, void* object)
     stack->count++;
     return;
 }
+
+
+void* stack_pop(stack_t* stack)
+{
+    if (stack->count == 0)
+    {
+        return NULL;
+    }
+
+    stack->count--;
+    return stack->data[stack->count];
+}
