@@ -61,6 +61,15 @@ void* stack_pop(stack_t* stack)
     return stack->data[stack->count];
 }
 
+void* stack_peek(stack_t* stack)
+{
+    if (stack->count == 0)
+    {
+        return NULL;
+    }
+
+    return stack->data[stack->count];
+}
 
 void stack_free(stack_t* stack)
 {
@@ -73,6 +82,6 @@ void stack_free(stack_t* stack)
     {
         free(stack->data);
     }
-    
+
     free(stack);
 }
