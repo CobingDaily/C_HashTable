@@ -1,6 +1,8 @@
+/*
+ * This is a header for a <str, int> hashtable implementation
+ */
 #pragma once
-
-#define TABLE_SIZE 10
+#include <stddef.h>
 
 typedef struct
 {
@@ -10,9 +12,12 @@ typedef struct
 
 typedef struct
 {
-    element entries[TABLE_SIZE];
-    unsigned int count;
+    size_t capacity;
+    size_t size;
+    element** entries;
 } hash_table;
+
+hash_table* new_hash_table(size_t capacity);
 
 unsigned int hash(const char *);
 

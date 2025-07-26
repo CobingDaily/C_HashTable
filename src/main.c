@@ -4,40 +4,8 @@
 
 int main(void)
 {
-    const char *string = "d001";
-    unsigned int index = hash(string);
-
-    printf("Hash: %d\n", index);
-
-    hash_table ht = {0};
-
-    element bob1 = {
-        .key = "Bob",
-        .value = 18,
-    };
-
-    element bob2 = {
-        .key = "Bob",
-        .value = 21,
-    };
-
-    element alex = {
-        .key = "Alex",
-        .value = 25,
-    };
-
-    hash_table_put(&ht, &bob1);
-    hash_table_put(&ht, &bob2);
-    hash_table_put(&ht, &alex);
-
-    print_ht(&ht);
-
-    info("=============");
-
-    element lookup = hash_table_delete(&ht, "Bob");
-
-    print_entry(&lookup);
-    print_ht(&ht);
+    hash_table* ht = new_hash_table(10);
+    
 
     return 0;
 }
