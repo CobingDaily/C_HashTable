@@ -5,7 +5,7 @@
 int main(void)
 {
     hash_table* ht = new_hash_table(10);
-    
+    print_ht(ht);
 
     return 0;
 }

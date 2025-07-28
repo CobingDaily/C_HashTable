@@ -91,18 +91,18 @@ unsigned int hash(hash_table* ht, const char *string)
 
 // // Utilities
 
-// void print_entry(element *e)
-// {
-//     printf("{Name: %s, Age: %d}\n", e->key, e->value);
-// }
+void print_element(element *e)
+{
+    printf("{Key: %s, Value: %d}\n", e->key, e->value);
+}
 
-// void print_ht(hash_table *ht)
-// {
-//     element *entries = ht->entries;
+void print_ht(hash_table *ht)
+{
+    element** entries = ht->entries;
 
-//     for (int i = 0; i < TABLE_SIZE; i++)
-//     {
-//         printf("[%d] => ", i);
-//         print_entry(&entries[i]);
-//     }
-// }
+    for (size_t i = 0; i < ht->capacity; i++)
+    {
+        printf("[%ld] => ", i);
+        // print_element(entries[i]);
+    }
+}
