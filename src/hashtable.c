@@ -20,7 +20,7 @@ hash_table* new_hash_table(size_t capacity)
 
     ht->size = 0;
     ht->capacity = capacity;
-    ht->entries = elements;
+    ht->elements = elements;
     return ht;
 }
 
@@ -104,11 +104,11 @@ void print_element(element *e)
 
 void print_ht(hash_table *ht)
 {
-    element** entries = ht->entries;
+    element** elements = ht->elements;
 
     for (size_t i = 0; i < ht->capacity; i++)
     {
         printf("[%ld] => ", i);
-        print_element(entries[i]);
+        print_element(elements[i]);
     }
 }

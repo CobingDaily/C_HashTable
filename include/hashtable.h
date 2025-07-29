@@ -14,7 +14,7 @@ typedef struct
 {
     size_t capacity;
     size_t size;
-    element** entries;
+    element** elements;
 } hash_table;
 
 hash_table* new_hash_table(size_t capacity);
