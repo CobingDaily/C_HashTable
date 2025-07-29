@@ -93,6 +93,12 @@ unsigned int hash(hash_table* ht, const char *string)
 
 void print_element(element *e)
 {
+    if (e == NULL)
+    {
+        printf("{Key: NULL, Value: NULL}\n");
+        return;
+    }
+    
     printf("{Key: %s, Value: %d}\n", e->key, e->value);
 }
 
@@ -103,6 +109,6 @@ void print_ht(hash_table *ht)
     for (size_t i = 0; i < ht->capacity; i++)
     {
         printf("[%ld] => ", i);
-        // print_element(entries[i]);
+        print_element(entries[i]);
     }
 }
