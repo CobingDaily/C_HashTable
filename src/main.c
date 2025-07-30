@@ -5,10 +5,14 @@
 int main(void)
 {
     hash_table* ht = new_hash_table(10);
+
     hash_table_put(ht, "John", 18);
     hash_table_put(ht, "Tom", 20);
     hash_table_put(ht, "Ash", 18);
+
     print_ht(ht);
+
+    free_hash_table(ht);
 
     return 0;
 }

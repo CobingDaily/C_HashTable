@@ -18,6 +18,7 @@ typedef struct
 } hash_table;
 
 hash_table* new_hash_table(size_t capacity);
+void free_hash_table(hash_table* ht);
 
 unsigned int hash(hash_table* ht, const char* key);
 

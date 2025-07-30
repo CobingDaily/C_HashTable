@@ -24,6 +24,18 @@ hash_table* new_hash_table(size_t capacity)
     return ht;
 }
 
+void free_hash_table(hash_table* ht)
+{
+    if (!ht) return;
+    
+    if (ht->elements)
+    {
+        free(ht->elements);
+    }
+    
+    free(ht);
+}
+
 unsigned int hash(hash_table* ht, const char *string)
 {
     unsigned int sum = 0;
