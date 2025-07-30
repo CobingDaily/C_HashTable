@@ -42,13 +42,13 @@ void hash_table_put(hash_table* ht, const char* key, int value)
 {
     unsigned int index = hash(ht, key);
 
-    element current = ht->elements[index];
+    element* current = &ht->elements[index];
 
-    // while (current->key && strcmp(current->key, key))
-    // {
-    //     index = (index + 1) % ht->capacity;
-    //     current = ht->elements[index];
-    // }
+    while (current->key && strcmp(current->key, key))
+    {
+        index = (index + 1) % ht->capacity;
+        current = &ht->elements[index];
+    }
 
     ht->elements[index].key = key;
     ht->elements[index].value = value;
