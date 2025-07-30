@@ -7,25 +7,25 @@
 typedef struct
 {
     const char *key;
-    unsigned int value;
+    int value;
 } element;
 
 typedef struct
 {
     size_t capacity;
     size_t size;
-    element** elements;
+    element* elements;
 } hash_table;
 
 hash_table* new_hash_table(size_t capacity);
 
 unsigned int hash(hash_table* ht, const char* key);
 
-void hash_table_put(hash_table *, element *);
+void hash_table_put(hash_table* ht, const char* key, int value);
 
-element hash_table_get(hash_table *, const char *key);
+// element hash_table_get(hash_table *, const char *key);
 
-element hash_table_delete(hash_table *, const char *key);
+// element hash_table_delete(hash_table *, const char *key);
 
 // Utilities
 void print_element(element *);

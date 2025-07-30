@@ -11,7 +11,7 @@ hash_table* new_hash_table(size_t capacity)
         return NULL;
     }
 
-    element** elements = calloc(capacity, sizeof(element*));
+    element* elements = calloc(capacity, sizeof(element));
     if (!elements)
     {
         free(ht);
@@ -35,25 +35,25 @@ unsigned int hash(hash_table* ht, const char *string)
         pos++;
     }
 
-    return sum % ht->size;
+    return sum % ht->capacity;
 }
 
-// void hash_table_put(hash_table *ht, element *e)
-// {
-//     unsigned int index = hash(e->key);
+void hash_table_put(hash_table* ht, const char* key, int value)
+{
+    unsigned int index = hash(ht, key);
 
-//     element *current = &ht->entries[index];
+    element current = ht->elements[index];
 
-//     while (current->key && strcmp(current->key, e->key))
-//     {
-//         index = (index + 1) % TABLE_SIZE;
-//         current = &ht->entries[index];
-//     }
+    // while (current->key && strcmp(current->key, key))
+    // {
+    //     index = (index + 1) % ht->capacity;
+    //     current = ht->elements[index];
+    // }
 
-//     ht->entries[index].key = e->key;
-//     ht->entries[index].value = e->value;
-//     ht->count++;
-// }
+    ht->elements[index].key = key;
+    ht->elements[index].value = value;
+    ht->size++;
+}
 
 // element hash_table_get(hash_table *ht, const char *name)
 // {
@@ -104,11 +104,11 @@ void print_element(element *e)
 
 void print_ht(hash_table *ht)
 {
-    element** elements = ht->elements;
+    element* elements = ht->elements;
 
     for (size_t i = 0; i < ht->capacity; i++)
     {
         printf("[%ld] => ", i);
-        print_element(elements[i]);
+        print_element(&elements[i]);
     }
 }
