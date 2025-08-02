@@ -9,8 +9,11 @@ int main(void)
     hash_table_put(ht, "John", 18);
     hash_table_put(ht, "Tom", 20);
     hash_table_put(ht, "Ash", 18);
+    hash_table_put(ht, "Ash", 30);
 
     print_ht(ht);
+
+    printf("%d\n", hash_table_get(ht, "John"));
 
     free_hash_table(ht);
 

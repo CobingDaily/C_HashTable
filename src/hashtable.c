@@ -67,20 +67,20 @@ void hash_table_put(hash_table* ht, const char* key, int value)
     ht->size++;
 }
 
-// element hash_table_get(hash_table *ht, const char *name)
-// {
-//     unsigned int index = hash(name);
+int hash_table_get(hash_table* ht, const char* key)
+{
+    unsigned int index = hash(ht, key);
 
-//     element *current = &ht->entries[index];
+    element* current = &ht->elements[index];
 
-//     while (current->key && strcmp(current->key, name))
-//     {
-//         index = (index + 1) % TABLE_SIZE;
-//         current = &ht->entries[index];
-//     }
+    while (current->key && strcmp(current->key, key))
+    {
+        index = (index + 1) % ht->capacity;
+        current = &ht->elements[index];
+    }
 
-//     return *current;
-// }
+    return current->value;
+}
 
 // element hash_table_delete(hash_table *ht, const char *name)
 // {
