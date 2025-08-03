@@ -12,9 +12,13 @@ int main(void)
     hash_table_put(ht, "Ash", 30);
 
     print_ht(ht);
+    printf("%d\n", hash_table_get(ht, "Ash"));
 
-    printf("%d\n", hash_table_get(ht, "John"));
+    hash_table_delete(ht, "Ash");
 
+    print_ht(ht);
+    printf("%d\n", hash_table_get(ht, "Ash"));
+    
     free_hash_table(ht);
 
     return 0;

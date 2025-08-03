@@ -27,7 +27,7 @@ void hash_table_put(hash_table* ht, const char* key, int value);
 
 int hash_table_get(hash_table* ht, const char* key);
 
-// element hash_table_delete(hash_table *, const char *key);
+int hash_table_delete(hash_table* ht, const char* key);
 
 // Utilities
 void print_element(element *);

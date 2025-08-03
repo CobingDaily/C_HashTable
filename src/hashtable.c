@@ -82,24 +82,24 @@ int hash_table_get(hash_table* ht, const char* key)
     return current->value;
 }
 
-// element hash_table_delete(hash_table *ht, const char *name)
-// {
-//     unsigned int index = hash(name);
+int hash_table_delete(hash_table* ht, const char* key)
+{
+    unsigned int index = hash(ht, key);
 
-//     element *current = &ht->entries[index];
+    element *current = &ht->elements[index];
 
-//     while (current->key && strcmp(current->key, name))
-//     {
-//         index = (index + 1) % TABLE_SIZE;
-//         current = &ht->entries[index];
-//     }
-//     element ret = *current;
-//     current->key = NULL;
-//     current->value = NULL;
+    while (current->key && strcmp(current->key, key))
+    {
+        index = (index + 1) % ht->capacity;
+        current = &ht->elements[index];
+    }
+    int ret = current->value;
+    current->key = NULL;
+    current->value = 0;
 
-//     ht->count--;
-//     return ret;
-// }
+    ht->size--;
+    return ret;
+}
 
 // // Utilities
 
