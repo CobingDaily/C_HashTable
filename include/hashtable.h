@@ -29,6 +29,8 @@ int hash_table_get(hash_table* ht, const char* key);
 
 int hash_table_delete(hash_table* ht, const char* key);
 
+void hash_table_resize(hash_table* ht, size_t new_capacity);
+
 // Utilities
 void print_element(element *);
 
