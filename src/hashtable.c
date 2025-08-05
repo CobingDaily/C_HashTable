@@ -24,6 +24,22 @@ hash_table* new_hash_table(size_t capacity)
     return ht;
 }
 
+void hash_table_resize(hash_table* ht, size_t new_capacity)
+{   
+    if (!ht)
+    {
+        return;
+    }
+
+    element* elements = realloc(ht->elements, new_capacity * sizeof(element));
+    if (!elements)
+    {
+        return;
+    }
+    ht->capacity = new_capacity;
+    ht->elements = elements;
+}
+
 void free_hash_table(hash_table* ht)
 {
     if (!ht) return;
@@ -99,11 +115,6 @@ int hash_table_delete(hash_table* ht, const char* key)
 
     ht->size--;
     return ret;
-}
-
-void hash_table_resize(hash_table* ht, size_t new_capacity)
-{
-    
 }
 
 // // Utilities
