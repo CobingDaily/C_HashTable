@@ -9,20 +9,18 @@ int main(void)
     hash_table_put(ht, "John", 18);
     hash_table_put(ht, "Tom", 20);
     hash_table_put(ht, "Ash", 18);
-    hash_table_put(ht, "Ash", 30);
 
     print_ht(ht);
-    // printf("%d\n", hash_table_get(ht, "Ash"));
     printf("---------------------\n");
 
-    // hash_table_delete(ht, "Ash");
+    hash_table_put(ht, "Nick", 30);
 
-    hash_table_resize(ht, 6);
-    print_ht(ht);
-    // printf("%d\n", hash_table_get(ht, "Ash"));
-
-
+    // hash_table_put(ht, "John", 18);
+    // hash_table_put(ht, "Tom", 20);
+    // hash_table_put(ht, "Ash", 18);
     
+    print_ht(ht);
+
     free_hash_table(ht);
 
     return 0;

@@ -68,6 +68,11 @@ unsigned int hash(hash_table* ht, const char *string)
 
 void hash_table_put(hash_table* ht, const char* key, int value)
 {
+    if (ht->size == ht->capacity)
+    {
+        hash_table_resize(ht, ht->capacity * 2);
+    }
+
     unsigned int index = hash(ht, key);
 
     element* current = &ht->elements[index];
