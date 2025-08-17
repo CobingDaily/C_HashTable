@@ -15,3 +15,22 @@ bi_tree* new_bi_tree(int data)
     tree->rightChild = NULL;
     return tree;
 }
+
+bi_tree* bi_tree_insert(bi_tree* root, int data)
+{
+    if (root == NULL)
+    {
+        return new_bi_tree(data);
+    }
+
+    if (data < root->data)
+    {
+        return bi_tree_insert(root->leftChild, data);
+    }
+    else if (data > root->data)
+    {
+        return bi_tree_insert(root->rightChild, data);
+    }
+
+    return root;
+}
