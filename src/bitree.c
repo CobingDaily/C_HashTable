@@ -34,3 +34,13 @@ bi_tree* bi_tree_insert(bi_tree* root, int data)
 
     return root;
 }
+
+void free_bi_tree(bi_tree* root)
+{
+    if (root == NULL) return;
+
+    free_bi_tree(root->leftChild);
+    free_bi_tree(root->rightChild);
+
+    free(root);
+}
