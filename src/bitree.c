@@ -25,11 +25,11 @@ bi_tree* bi_tree_insert(bi_tree* root, int data)
 
     if (data < root->data)
     {
-        return bi_tree_insert(root->leftChild, data);
+        root->leftChild = bi_tree_insert(root->leftChild, data);
     }
     else if (data > root->data)
     {
-        return bi_tree_insert(root->rightChild, data);
+        root->rightChild = bi_tree_insert(root->rightChild, data);
     }
 
     return root;
